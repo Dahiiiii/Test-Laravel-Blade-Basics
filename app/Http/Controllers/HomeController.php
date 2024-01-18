@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
@@ -11,7 +13,7 @@ class HomeController extends Controller
     {
         $usersCount = User::count();
 
-        return view('users');
+        return view('users', ['usersCount'=> $usersCount]);
     }
 
     // Task 2. Change the View code so alert would not show on the screen
@@ -26,7 +28,7 @@ class HomeController extends Controller
     public function table()
     {
         $users = User::all();
-
+        
         return view('table', compact('users'));
     }
 
